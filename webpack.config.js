@@ -16,6 +16,10 @@ module.exports = {
         test: /\.less$/,
         use: ['style-loader', 'css-loader', 'less-loader'],
       },
+      {
+        test: /\.(png|jpg|gif|mp4|ogg|svg|woff|woff2|ttf|eot|glb|obj|gltf|hdr)$/,
+        loader: 'file-loader',
+      },
     ],
   },
   resolve: { extensions: ['*', '.js', '.ts', '.tsx', '.jsx'] },
