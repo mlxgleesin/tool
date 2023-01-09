@@ -13,8 +13,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "react-scripts build",
+    "start": "npx webpack serve --port 8080",
+    "build": "npx webpack build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -42,6 +42,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.2",
+    "chalk": "^5.2.0",
     "css-loader": "^1.0.0",
     "file-loader": "^6.2.0",
     "less": "^4.1.3",
@@ -49,6 +50,7 @@
     "style-loader": "^0.23.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.11.1"
+    "webpack-dev-server": "^4.11.1",
+    "webpackbar": "^5.0.2"
   }
 }
