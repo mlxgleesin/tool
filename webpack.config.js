@@ -1,13 +1,19 @@
 const path = require('path');
 const webpack = require('webpack');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const ENV = process.env.NODE_ENV;
+
 /**
  * webpack构建进度条美化
  * todo: 如何去掉webpack-dev-server构建时候的控制台info
  */
 const WebpackBar = require('webpackbar');
+function resolve(dir) {
+  return path.join(__dirname, dir);
+}
 module.exports = {
-  entry: './src/index.ts',
-  mode: 'development',
+  entry: './src/index.tsx',
+  mode: ENV === 'production' ? ENV : 'development',
   // 处理模块的各种规则
   module: {
     rules: [
@@ -17,9 +23,21 @@ module.exports = {
         loader: 'babel-loader',
         options: { presets: ['@babel/env'] },
       },
+      // 项目使用less,并且添加公共样式文件，注入到每个文件中
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+          'less-loader',
+          {
+            loader: 'style-resources-loader',
+            options: {
+              patterns: resolve('src/styles/common.less'),
+              injector: 'append',
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpg|gif|mp4|ogg|svg|woff|woff2|ttf|eot|glb|obj|gltf|hdr)$/,
@@ -37,11 +55,11 @@ module.exports = {
     // import引入这些类型文件时，可以不带扩展名.ts ...
     extensions: ['*', '.js', '.ts', '.tsx', '.jsx'],
     alias: {
-      '@': path.resolve(__dirname, 'src/'),
+      '@': resolve('src'),
     },
   },
   output: {
-    path: path.resolve(__dirname, 'dist/'),
+    path: resolve('dist'),
     publicPath: '/dist/',
     filename: 'bundle.js',
   },

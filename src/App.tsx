@@ -4,7 +4,6 @@
  * @desc
  */
 import React, { useEffect, useState, FC, useCallback } from 'react';
-// import {} from 'antd';
 import $ from './index.less';
 // interface Props {
 //   data?: object;
@@ -12,6 +11,6 @@ import $ from './index.less';
 /**  */
 const App = props => {
   useEffect(() => {}, []);
-  return <div className={$.app}>111</div>;
+  return <div className="fs-10">222</div>;
 };
 export default App;
