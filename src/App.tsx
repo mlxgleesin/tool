@@ -6,7 +6,7 @@
 import React, { useEffect, useState, FC, useCallback } from 'react';
 import { createStore } from 'redux';
 import { Button } from 'antd';
-import Index from '@/pages/index';
+import Index from './pages/index';
 
 const defaultState = 0;
 const reducer = (state = defaultState, action) => {
