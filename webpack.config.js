@@ -1,8 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const TerserJSPlugin = require('terser-webpack-plugin');
+const Speed = require('speed-measure-webpack-plugin');
 const ENV = process.env.NODE_ENV;
-
+/** 查看打包速度耗时、分析 */
+const smp = new Speed();
 /**
  * webpack构建进度条美化
  * todo: 如何去掉webpack-dev-server构建时候的控制台info
@@ -11,7 +13,7 @@ const WebpackBar = require('webpackbar');
 function resolve(dir) {
   return path.join(__dirname, dir);
 }
-module.exports = {
+module.exports = smp.wrap({
   entry: './src/index.tsx',
   mode: ENV === 'production' ? ENV : 'development',
   // 处理模块的各种规则
@@ -71,4 +73,4 @@ module.exports = {
     port: 9000,
   },
   plugins: [new webpack.HotModuleReplacementPlugin(), new WebpackBar()],
-};
+});
