@@ -3,7 +3,9 @@
  * @date 2023-01-09 23:29:47
  * @desc
  */
-import React, { useEffect, useState, FC, useCallback } from 'react';
+import React, { useState, FC, useCallback } from 'react';
+import { render } from 'react-dom';
+import { Router, Route, Link } from 'react-router';
 import { createStore } from 'redux';
 import { Button } from 'antd';
 import Index from './pages/index';
@@ -21,8 +23,8 @@ const reducer = (state = defaultState, action) => {
 };
 const store = createStore(reducer);
 /** App */
-const App = () => {
-  const [name, setName] = useState(1);
+const App: FC = props => {
+  // const [name, setName] = useState(1);
   /** 发送action */
   const handleDispatchAction = useCallback(() => {
     store.dispatch({
