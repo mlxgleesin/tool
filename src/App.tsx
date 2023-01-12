@@ -24,7 +24,6 @@ const reducer = (state = defaultState, action) => {
 const store = createStore(reducer);
 /** App */
 const App: FC = props => {
-  // const [name, setName] = useState(1);
   /** 发送action */
   const handleDispatchAction = useCallback(() => {
     store.dispatch({
