@@ -3,9 +3,7 @@
  * @date 2023-01-09 23:29:47
  * @desc
  */
-import React, { useState, FC, useCallback } from 'react';
-import { render } from 'react-dom';
-import { Router, Route, Link } from 'react-router';
+import React, { FC, useCallback } from 'react';
 import { createStore } from 'redux';
 import { Button } from 'antd';
 import Index from './pages/index';
