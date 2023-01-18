@@ -6,7 +6,8 @@
 import React, { FC, useCallback } from 'react';
 import { createStore } from 'redux';
 import { Button } from 'antd';
-import Index from './pages/index';
+import Index from '@/pages/index';
+import Detail from '@/pages/detail';
 
 const defaultState = 0;
 const reducer = (state = defaultState, action) => {
@@ -36,6 +37,7 @@ const App: FC = props => {
         点击
       </Button>
       <Index />
+      <Detail />
     </div>
   );
 };
