@@ -4,12 +4,13 @@
  * @desc
  */
 import React, { useCallback, useState, useEffect } from 'react';
-// import { incrementAsync, increment } from '@/store/store';
 import { Button } from 'antd';
+import { useSelector } from 'react-redux';
+import Counter from '@/features/counter/counter';
 
 /** 首页 */
 const Index = () => {
-  const [count, setCount] = useState(0);
+  const count = useSelector(state => state.counter.value);
   useEffect(() => {}, []);
 
   const handleClickCounter = useCallback(() => {
@@ -20,6 +21,7 @@ const Index = () => {
     <div className="index">
       <div>首页-{count}</div>
       <Button onClick={handleClickCounter}>计数器</Button>
+      <Counter />
     </div>
   );
 };
